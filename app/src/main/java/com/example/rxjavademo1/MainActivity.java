@@ -1,8 +1,12 @@
 package com.example.rxjavademo1;
 
+import android.content.Intent;
+import android.printservice.CustomPrinterIconCallback;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -28,6 +32,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView tvContent = (TextView) findViewById(R.id.tvContent);
+        tvContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CustomDataTypeOperatorsClass.class);
+                startActivity(intent);
+            }
+        });
 
         Observable<String> dogsObservable = getDogsObservable();
 
